@@ -1,4 +1,4 @@
-const getEle = (element) => getEle(element);
+const getEle = (element) => document.querySelector(element);
 
 const inputBaseAmount = getEle("#base-amount");
 const inputTargetAmount = getEle("#target-amount");
