@@ -36,7 +36,7 @@ const caculateTargetAmount = () => {
     10 ** 6;
 };
 
-const caculateBasetAmount = () => {
+const caculateBaseAmount = () => {
   inputBaseAmount.value =
     Math.round((Number(inputTargetAmount.value) / conversionRate) * 10 ** 6) /
     10 ** 6;
@@ -50,7 +50,7 @@ selectTargetCode.addEventListener("change", caculateTargetAmount);
 
 inputBaseAmount.addEventListener("input", caculateTargetAmount);
 
-inputTargetAmount.addEventListener("input", caculateBasetAmount);
+inputTargetAmount.addEventListener("input", caculateBaseAmount);
 
 const initialize = async () => {
   // Get Supported Code
