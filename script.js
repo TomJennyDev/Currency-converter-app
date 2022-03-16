@@ -1,12 +1,14 @@
-const inputBaseAmount = document.querySelector("#base-amount");
-const inputTargetAmount = document.querySelector("#target-amount");
+const getEle = (element) => getEle(element);
 
-const baseUnit = document.querySelector("#base-unit");
-const targetRate = document.querySelector("#target-rate");
+const inputBaseAmount = getEle("#base-amount");
+const inputTargetAmount = getEle("#target-amount");
 
-const selectBaseCode = document.querySelector("#base-code");
-const selectTargetCode = document.querySelector("#target-code");
-const errorMsg = document.querySelector(".error-message");
+const baseUnit = getEle("#base-unit");
+const targetRate = getEle("#target-rate");
+
+const selectBaseCode = getEle("#base-code");
+const selectTargetCode = getEle("#target-code");
+const errorMsg = getEle(".error-message");
 let supportedCodes = [];
 let conversionRate = 0;
 
@@ -14,13 +16,13 @@ const updateExchangeRate = async () => {
   const baseCode = selectBaseCode.value;
   const targetCode = selectTargetCode.value;
 
-  document.querySelector(".exchange-info").classList.add("visible");
-  document.querySelector(".skeleton").classList.remove("visible");
+  getEle(".exchange-info").classList.add("visible");
+  getEle(".skeleton").classList.remove("visible");
 
   conversionRate = await getConversionRate(baseCode, targetCode);
 
-  document.querySelector(".skeleton").classList.add("visible");
-  document.querySelector(".exchange-info").classList.remove("visible");
+  getEle(".skeleton").classList.add("visible");
+  getEle(".exchange-info").classList.remove("visible");
 
   const baseName = supportedCodes.find((code) => code[0] === baseCode)[1];
   const targetName = supportedCodes.find((code) => code[0] === targetCode)[1];
@@ -53,8 +55,8 @@ inputTargetAmount.addEventListener("input", caculateBasetAmount);
 const initialize = async () => {
   // Get Supported Code
 
-  document.querySelector(".exchange-info").classList.add("visible");
-  document.querySelector(".skeleton").classList.remove("visible");
+  getEle(".exchange-info").classList.add("visible");
+  getEle(".skeleton").classList.remove("visible");
 
   supportedCodes = await getSupportedCode();
   if (!supportedCodes.length) {
@@ -62,8 +64,8 @@ const initialize = async () => {
     return;
   }
 
-  document.querySelector(".skeleton").classList.add("visible");
-  document.querySelector(".exchange-info").classList.remove("visible");
+  getEle(".skeleton").classList.add("visible");
+  getEle(".exchange-info").classList.remove("visible");
 
   // Put options into the select boxes
   supportedCodes.forEach((code) => {
@@ -86,7 +88,7 @@ const initialize = async () => {
   await updateExchangeRate();
 };
 
-const selectBtnExchange = document.querySelector(".btn-exchange");
+const selectBtnExchange = getEle(".btn-exchange");
 selectBtnExchange.addEventListener("click", async () => {
   let tempExchange;
 
